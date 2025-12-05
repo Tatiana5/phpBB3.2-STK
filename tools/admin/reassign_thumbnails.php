@@ -37,13 +37,13 @@ class reassign_thumbnails
 
 	function run_tool()
 	{
-		global $config, $db, $lang, $cache, $template, $phpEx;
+		global $config, $db, $lang, $cache, $template, $request, $phpEx;
 
 		include_once(PHPBB_ROOT_PATH . 'includes/functions_posting.' . $phpEx);
 		ignore_user_abort(true);
 		set_time_limit(0);
 
-		$step			= request_var('step', 0);
+		$step			= $request->variable('step', 0);
 
 		$begin			= $this->_batch_size * $step;
 		$upload_path	= PHPBB_ROOT_PATH . $config['upload_path'] . '/';

@@ -56,15 +56,15 @@ class clear_black_list
 			$ban_end_options .= '<option value="' . $length . '">' . $text . '</option>';
 		}
 		$sql = 'SELECT *
-			FROM ' . BANLIST_TABLE . '
+			FROM ' . BANS_TABLE . '
 			WHERE (ban_end >= ' . time() . "
 					OR ban_end = 0)
-				AND ban_ip <> ''
-			ORDER BY ban_ip";
+				AND ban_userid <> ''
+			ORDER BY ban_userid";
 		$result = $db->sql_query($sql);
 
 		$banned_options = $excluded_options = array();
-		$field = 'ban_ip';
+		$field = 'ban_userid';
 		while ($row = $db->sql_fetchrow($result))
 		{
 			$option = '<option value="' . $row['ban_id'] . '">' . $row[$field] . '</option>';

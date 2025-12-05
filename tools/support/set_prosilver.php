@@ -37,7 +37,7 @@ class set_prosilver
 	{
 		global $db, $request, $config, $lang;
 
-		if (!file_exists(PHPBB_ROOT_PATH . 'styles/prosilver/style.cfg'))
+		if (!file_exists(PHPBB_ROOT_PATH . 'styles/prosilver/composer.json'))
 		{
 			trigger_error($lang['SET_PROSILVER_DOES_NOT_EXIST'], E_USER_WARNING);
 		}

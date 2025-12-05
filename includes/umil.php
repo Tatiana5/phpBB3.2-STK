@@ -150,13 +150,26 @@ class umil
 			$this->db = $db;
 		}
 
+		if (!class_exists('phpbb\db\doctrine\connection_factory'))
+		{
+			include PHPBB_ROOT_PATH . 'phpbb/db/doctrine/connection_factory.' . PHP_EXT;
+		}
+
+		if (!class_exists('phpbb\config_php_file'))
+		{
+			include PHPBB_ROOT_PATH . 'phpbb/config_php_file.' . PHP_EXT;
+		}
+
+		global $phpbb_config_php_file;
+		$connection = phpbb\db\doctrine\connection_factory::get_connection($phpbb_config_php_file);
+
 		// Setup $this->db_tools
 		if (!class_exists('phpbb\db\tools\tools'))
 		{
 			include PHPBB_ROOT_PATH . 'phpbb/db/tools/tools.' . PHP_EXT;
 		}
 
-		$this->db_tools = new phpbb\db\tools\tools($this->db);
+		$this->db_tools = new phpbb\db\tools\tools($connection);
 
 		$this->stand_alone = $stand_alone;
 
@@ -1280,7 +1293,7 @@ class umil
 					'ACP_ATTACHMENT_SETTINGS', 'ACP_BOARD_SETTINGS', 'ACP_BOARD_FEATURES', 'ACP_AVATAR_SETTINGS', 'ACP_MESSAGE_SETTINGS', 'ACP_POST_SETTINGS',
 					'ACP_SIGNATURE_SETTINGS', 'ACP_FEED_SETTINGS', 'ACP_REGISTER_SETTINGS', 'ACP_VC_SETTINGS', 'ACP_VC_CAPTCHA_DISPLAY','ACP_CONTACT_SETTINGS',
 				'ACP_CLIENT_COMMUNICATION',
-					'ACP_AUTH_SETTINGS', 'ACP_JABBER_SETTINGS', 'ACP_EMAIL_SETTINGS',
+					'ACP_AUTH_SETTINGS', 'ACP_EMAIL_SETTINGS',
 				'ACP_SERVER_CONFIGURATION',
 					'ACP_COOKIE_SETTINGS', 'ACP_SERVER_SETTINGS', 'ACP_SECURITY_SETTINGS', 'ACP_LOAD_SETTINGS', 'ACP_SEARCH_SETTINGS',
 				'ACP_CAT_FORUMS',
@@ -1436,9 +1449,6 @@ class umil
 					case 'ACP_BOARD_FEATURES':
 					case 'ACP_BOARD_SETTINGS':
 						$basename = 'board';
-					break;
-					case 'ACP_JABBER_SETTINGS':
-						$basename = 'jabber';
 					break;
 					case 'ACP_CONTACT_SETTINGS':
 						$basename = 'contact';
@@ -2850,6 +2860,21 @@ class umil
 
 		return $this->umil_end();
 	}
+	
+	function get_remote_file($host, $directory, $filename, &$errstr, &$errno, $port = 80, $timeout = 6)
+	{
+		global $phpbb_container;
+
+		// Get file downloader and assign $errstr and $errno
+		/* @var $file_downloader \phpbb\file_downloader */
+		$file_downloader = $phpbb_container->get('file_downloader');
+	
+		$file_data = $file_downloader->get($host, $directory, $filename, $port, $timeout);
+		$errstr = $file_downloader->get_error_string();
+		$errno = $file_downloader->get_error_number();
+	
+		return $file_data;
+	}
 
 	/**
 	* Version Checker
@@ -2865,16 +2890,9 @@ class umil
 	*/
 	function version_check($url, $path, $file, $timeout = 10, $port = 443)
 	{
-		if (!function_exists('get_remote_file'))
-		{
-			global $phpbb_root_path, $phpEx;
-
-			include($phpbb_root_path . 'includes/functions_compatibility.php.' . $phpEx);
-		}
-
 		$errstr = $errno = '';
 
-		$info = get_remote_file($url, $path, $file, $errstr, $errno, $port, $timeout);
+		$info = $this->get_remote_file($url, $path, $file, $errstr, $errno, $port, $timeout);
 
 		if ($info === false)
 		{

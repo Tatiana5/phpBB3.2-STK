@@ -29,7 +29,6 @@ class user_options
 
 		$user_settings = array(
 			0 => 'viewimg',
-			1 => 'viewflash',
 			2 => 'viewsmilies',
 			3 => 'viewsigs',
 			4 => 'viewavatars',

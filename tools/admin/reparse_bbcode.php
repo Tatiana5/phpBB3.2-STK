@@ -75,7 +75,6 @@ class reparse_bbcode
 		'enable_magic_url'	=> false,
 		'enable_smilies'	=> false,
 		'img_status'		=> false,
-		'flash_status'		=> false,
 		'enable_urls'		=> false,
 	);
 
@@ -716,7 +715,7 @@ class reparse_bbcode
 		$this->_clean_message($this->message_parser);
 
 		// Re-parse it
-		$this->message_parser->parse($this->flags['enable_bbcode'], $this->flags['enable_magic_url'], $this->flags['enable_smilies'], $this->flags['img_status'], $this->flags['flash_status'], true, $this->flags['enable_urls']);
+		$this->message_parser->parse($this->flags['enable_bbcode'], $this->flags['enable_magic_url'], $this->flags['enable_smilies'], $this->flags['img_status'], true, $this->flags['enable_urls']);
 
 		// Build sig_data
 		$sig_data = array(

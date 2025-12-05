@@ -579,7 +579,7 @@ function stk_msg_handler($errno, $msg_text, $errfile, $errline)
 	// Do not display notices if we suppress them via @
 	if (error_reporting() == 0 && $errno != E_USER_ERROR && $errno != E_USER_WARNING && $errno != E_USER_NOTICE)
 	{
-		return;
+		return false;
 	}
 
 	if (!defined('E_DEPRECATED'))
@@ -661,7 +661,7 @@ function stk_msg_handler($errno, $msg_text, $errfile, $errline)
 			// If DEBUG is defined the default level is E_ALL
 			if (($errno & ((defined('DEBUG')) ? E_ALL : error_reporting())) == 0)
 			{
-				return;
+				return false;
 			}
 
 			if (strpos($errfile, 'cache') === false && strpos($errfile, 'template.') === false)
@@ -684,7 +684,7 @@ function stk_msg_handler($errno, $msg_text, $errfile, $errline)
 				}
 			}
 
-			return;
+			return false;
 
 		break;
 
@@ -898,6 +898,11 @@ if (!function_exists('adm_back_link'))
 	{
 		return '<br /><br /><a href="' . $u_action . '">&laquo; ' . user_lang('BACK_TO_PREV') . '</a>';
 	}
+}
+
+function phpbb_realpath($path)
+{
+	return \phpbb\filesystem\helper::realpath($path);
 }
 
 /**
@@ -1252,5 +1257,46 @@ function output($msg)
 	$template->assign_vars(array(
 		'OUTPUT'	=> $msg,
 	));
+}
+
+function phpbb_hash($password)
+{
+	global $phpbb_container;
+
+	/* @var $passwords_manager \phpbb\passwords\manager */
+	$passwords_manager = $phpbb_container->get('passwords.manager');
+	return $passwords_manager->hash($password);
+}
+
+function add_log()
+{
+	global $phpbb_log, $user;
+
+	$args = func_get_args();
+	$mode = array_shift($args);
+
+	// This looks kind of dirty, but add_log has some additional data before the log_operation
+	$additional_data = array();
+	switch ($mode)
+	{
+		case 'admin':
+		case 'critical':
+			break;
+		case 'mod':
+			$additional_data['forum_id'] = array_shift($args);
+			$additional_data['topic_id'] = array_shift($args);
+			break;
+		case 'user':
+			$additional_data['reportee_id'] = array_shift($args);
+			break;
+	}
+
+	$log_operation = array_shift($args);
+	$additional_data = array_merge($additional_data, $args);
+
+	$user_id = (empty($user->data)) ? ANONYMOUS : $user->data['user_id'];
+	$user_ip = (empty($user->ip)) ? '' : $user->ip;
+
+	return $phpbb_log->add($mode, $user_id, $user_ip, $log_operation, time(), $additional_data);
 }
 

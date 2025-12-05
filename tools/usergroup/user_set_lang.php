@@ -39,11 +39,14 @@ class user_set_lang
 		$db->sql_freeresult($result);
 		$s_options .= '</option>';
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'S_OPTIONS'			=> $s_options,
-			'S_LANG_OPTIONS'	=> language_select($config['default_lang']),
+			'S_LANG_OPTIONS'	=> ['id'		=> 'user_lang',
+									'style'		=> 'user_lang',
+									'options'	=> phpbb_language_select($db, $config['default_lang'], [])
+									],
 			'U_DISPLAY_ACTION'	=> append_sid(STK_INDEX, array('c' => 'user_group', 't' => 'user_set_lang')),
-		));
+		]);
 
 		$template->set_filenames(array(
 			'body' => 'tools/user_set_lang.html',

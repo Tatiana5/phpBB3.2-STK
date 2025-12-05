@@ -26,7 +26,6 @@ stk/language/../tools/main/srt_generator
 stk/language/../tools/support/auto_cookies
 stk/language/../tools/support/database_cleaner
 stk/language/../tools/support/fix_left_right_ids
-stk/language/../tools/support/flash_checker
 stk/language/../tools/support/mysql_upgrader
 stk/language/../tools/support/orphaned_posts
 stk/language/../tools/support/readd_module_management
@@ -55,7 +54,6 @@ stk/tools/main/srt_generator
 stk/tools/support/auto_cookies
 stk/tools/support/database_cleaner
 stk/tools/support/fix_left_right_ids
-stk/tools/support/flash_checker
 stk/tools/support/mysql_upgrader
 stk/tools/support/orphaned_posts
 stk/tools/support/readd_module_management

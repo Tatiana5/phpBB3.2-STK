@@ -40,7 +40,7 @@ class prune_avatars
 			ignore_user_abort(true);
 			set_time_limit(0);
 
-			$dir = '' . PHPBB_ROOT_PATH . '' . $config['avatar_path'] . '/';
+			$dir = '' . PHPBB_ROOT_PATH . '' . $config['storage\avatar\config\path'] . '/';
 			$files = $cache->get('_stk_prune_avatar'); // Try get data from cache
 			if (!$files)
 			{

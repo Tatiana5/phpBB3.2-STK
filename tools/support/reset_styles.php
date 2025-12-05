@@ -70,5 +70,13 @@ class reset_styles
 
 function style_select2($value, $key)
 {
-	return '<select name="' . $key . '">' . style_select($value) . '</select>';
+	$select = '<select name="' . $key . '">';
+
+	foreach (style_select($value, true) as $style)
+	{
+		$select .= '<option value="' . $style['value'] . '" selected="selected">' . $style['label'] . '</option>';
+	}
+
+	$select .= '</select>';
+	return $select;
 }

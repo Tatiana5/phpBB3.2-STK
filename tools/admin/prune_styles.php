@@ -40,7 +40,7 @@ class prune_styles
 			$dir = '' . PHPBB_ROOT_PATH . 'styles/';
 			foreach ($styles as $key => $value)
 			{
-				if (!file_exists($dir . $value['style_path'] . '/style.cfg'))
+				if (!file_exists($dir . $value['style_path'] . '/composer.json'))
 				{
 					$res = delete_style($styles[$key]);
 					if ($res === true)

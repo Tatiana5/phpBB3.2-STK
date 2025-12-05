@@ -539,12 +539,12 @@ class merge_users
 
 		if ($source['user_notify_type'] != $target['user_notify_type'] && $target['user_notify_type'] != NOTIFY_BOTH)
 		{
-			// Not the same, and target is not both, therefore one is jabber and one is email or otherway around
+			// Not the same, and target is not both, therefore one is email or otherway around
 			// Merge by setting to both
 			$update['target']['user_notify_type'] = NOTIFY_BOTH;
 		}
 
-		foreach (array('birthday', 'avatar', 'sig', 'jabber') as $var)
+		foreach (array('birthday', 'avatar', 'sig') as $var)
 		{
 			if (!$target['user_' . $var] && $source['user_' . $var])
 			{

@@ -45,7 +45,6 @@ $lang = array_merge($lang, array(
 	'USER_OPTIONS_OK'		=> 'Les paramètres des utilisateurs ont été modifiés avec succès.',
 
 	'viewimg'				=> 'Afficher les images dans les messages',
-	'viewflash'				=> 'Afficher les animations Flash',
 	'viewsmilies'			=> 'Afficher les smileys comme les images',
 	'viewsigs'				=> 'Afficher les signatures dans les messages',
 	'viewavatars'			=> 'Afficher les avatars dans les messages',

@@ -44,7 +44,6 @@ $lang = array_merge($lang, array(
 	'USER_OPTIONS_OK'		=> 'Users settings have been successfully changed.',
 
 	'viewimg'				=> 'Display images within posts',
-	'viewflash'				=> 'Display Flash animations',
 	'viewsmilies'			=> 'Display smilies as images',
 	'viewsigs'				=> 'Display signatures within posts',
 	'viewavatars'			=> 'Display avatars within posts',

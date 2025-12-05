@@ -53,7 +53,6 @@ class delete_bbcode
 		'enable_magic_url'	=> false,
 		'enable_smilies'	=> false,
 		'img_status'		=> false,
-		'flash_status'		=> false,
 		'enable_urls'		=> false,
 	);
 
@@ -276,7 +275,6 @@ class delete_bbcode
 			$this->flags['enable_magic_url']	= ($config['allow_post_links']) ? $this->data['enable_magic_url'] : false;
 			$this->flags['enable_smilies']		= ($this->data['enable_smilies']) ? true : false;
 			$this->flags['img_status']			= ($config['allow_bbcode']) ? true : false;
-			$this->flags['flash_status']		= ($config['allow_bbcode'] && $config['allow_post_flash']) ? true : false;
 			$this->flags['enable_urls']			= ($config['allow_post_links']) ? true : false;
 
 			$post_data = array();
@@ -363,7 +361,7 @@ class delete_bbcode
 		}
 
 		// Re-parse it
-		$this->message_parser->parse($this->flags['enable_bbcode'], $this->flags['enable_magic_url'], $this->flags['enable_smilies'], $this->flags['img_status'], $this->flags['flash_status'], true, $this->flags['enable_urls']);
+		$this->message_parser->parse($this->flags['enable_bbcode'], $this->flags['enable_magic_url'], $this->flags['enable_smilies'], $this->flags['img_status'], true, $this->flags['enable_urls']);
 
 		// Consider the bbcode_bitfield required for the poll
 		if (!empty($this->poll_parser) && !empty($this->poll_parser->bbcode_bitfield))

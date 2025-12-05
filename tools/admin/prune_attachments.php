@@ -43,7 +43,7 @@ class prune_attachments
 			ignore_user_abort(true);
 			set_time_limit(0);
 
-			$dir = '' . PHPBB_ROOT_PATH . '' . $config['upload_path'];
+			$dir = '' . PHPBB_ROOT_PATH . '' . $config['storage\attachment\config\path'];
 			$files_list = $cache->get('_stk_prune_attachments'); // Try get data from cache
 			if (!$files_list)
 			{

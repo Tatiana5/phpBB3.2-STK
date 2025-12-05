@@ -13,11 +13,9 @@
 			<dd><label><input class="radio" name="all_groups" value="1" type="checkbox" style="margin-top: 5px;">&nbsp;{L_ALL_GROUPS}</label></dd>
 		</dl>
 		<dl>
-			<dt><label for="user_lang">{L_LANGUAGE}{L_COLON}</label></dt>
+			<dt><label for="{{ S_LANG_OPTIONS.id }}">{L_LANGUAGE}{L_COLON}</label></dt>
 			<dd>
-				<select name="user_lang">
-					{S_LANG_OPTIONS}
-				</select>
+				{{ FormsSelect(S_LANG_OPTIONS) }}
 			</dd>
 		</dl>
 

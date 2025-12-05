@@ -69,7 +69,6 @@ class config_list
 			'anti_spam'			=> $lang['ANTI_SPAM'],
 			'auth'				=> $lang['AUTH'],
 			'email'				=> $lang['EMAIL'],
-			'config_jabber'		=> $lang['CONFIG_JABBER'],
 			'cookies'			=> $lang['COOKIES'],
 			'server'			=> $lang['SERVER'],
 			'security'			=> $lang['SECURITY'],
@@ -110,11 +109,11 @@ class config_list
 
 		$config_pm = array(
 			'allow_privmsg', 'pm_max_boxes', 'pm_max_msgs', 'full_folder_action', 'pm_edit_time', 'pm_max_recipients', 'allow_mass_pm', 'auth_bbcode_pm',
-			'auth_smilies_pm', 'allow_pm_attach', 'allow_sig_pm', 'print_pm', 'forward_pm', 'auth_img_pm', 'auth_flash_pm', 'enable_pm_icons',
+			'auth_smilies_pm', 'allow_pm_attach', 'allow_sig_pm', 'print_pm', 'forward_pm', 'auth_img_pm', 'enable_pm_icons',
 		);
 
 		$config_messages = array(
-			'allow_topic_notify', 'allow_forum_notify', 'allow_bbcode', 'allow_post_flash', 'allow_smilies', 'allow_post_links', 'allow_nocensors', 'allow_bookmarks',
+			'allow_topic_notify', 'allow_forum_notify', 'allow_bbcode', 'allow_smilies', 'allow_post_links', 'allow_nocensors', 'allow_bookmarks',
 			'enable_post_confirm', 'allow_quick_reply', 'edit_time', 'delete_time', 'display_last_edited', 'flood_interval', 'bump_interval', 'bump_type',
 			'topics_per_page', 'posts_per_page', 'smilies_per_page', 'hot_threshold', 'max_poll_options', 'max_post_chars', 'min_post_chars', 'max_post_smilies',
 			'max_post_urls', 'max_post_font_size', 'max_quote_depth', 'max_post_img_width', 'max_post_img_height', 'enable_queue_trigger', 'queue_trigger_posts',
@@ -122,7 +121,7 @@ class config_list
 		);
 
 		$config_signatures = array(
-			'allow_sig', 'allow_sig_bbcode', 'allow_sig_img', 'allow_sig_flash', 'allow_sig_smilies', 'allow_sig_links', 'max_sig_chars', 'max_sig_urls',
+			'allow_sig', 'allow_sig_bbcode', 'allow_sig_img', 'allow_sig_smilies', 'allow_sig_links', 'max_sig_chars', 'max_sig_urls',
 			'max_sig_font_size', 'max_sig_smilies', 'max_sig_img_width', 'max_sig_img_height',
 		);
 
@@ -158,10 +157,6 @@ class config_list
 		$config_email = array(
 			'email_enable', 'board_email_form', 'email_function_name', 'email_package_size', 'board_contact', 'board_contact_name', 'board_email', 'board_email_sig',
 			'board_hide_emails', 'smtp_delivery', 'smtp_host', 'smtp_port', 'smtp_auth_method', 'smtp_username', 'email_max_chunk_size', 'smtp_password', 'email_force_sender', 'smtp_allow_self_signed', 'smtp_verify_peer', 'smtp_verify_peer_name',
-		);
-
-		$config_config_jabber = array(
-			'jab_enable', 'jab_host', 'jab_port', 'jab_username', 'jab_password', 'jab_package_size', 'jab_use_ssl', 'jab_allow_self_signed', 'jab_verify_peer', 'jab_verify_peer_name'
 		);
 
 		$config_cookies = array(
@@ -221,7 +216,6 @@ class config_list
 		$config_common = array_merge($config_common, $config_anti_spam);
 		$config_common = array_merge($config_common, $config_auth);
 		$config_common = array_merge($config_common, $config_email);
-		$config_common = array_merge($config_common, $config_config_jabber);
 		$config_common = array_merge($config_common, $config_cookies);
 		$config_common = array_merge($config_common, $config_server);
 		$config_common = array_merge($config_common, $config_security);
@@ -302,9 +296,6 @@ class config_list
 				break;
 				case 'email'			:
 					$where = $config_email;
-				break;
-				case 'config_jabber'	:
-					$where = $config_config_jabber;
 				break;
 				case 'cookies'			:
 					$where = $config_cookies;

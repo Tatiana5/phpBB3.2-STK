@@ -82,7 +82,6 @@ class profile_list
 			'pf_phpbb_twitter'		=> 'TWITTER',
 			'pf_phpbb_yahoo'		=> 'YAHOO',
 			'pf_phpbb_youtube'		=> 'YOUTUBE',
-			'user_jabber'			=> 'JABBER',
 			'pf_phpbb_website'		=> 'WEBSITE',
 			'pf_phpbb_occupation'	=> 'OCCUPATION',
 			'pf_phpbb_interests'	=> 'INTERESTS',
@@ -194,7 +193,7 @@ class profile_list
 		$db->sql_query($sql);
 		$count = $db->sql_fetchfield('cnt');
 
-		$sql = 'SELECT u.user_id AS uid, u.username, u.user_sig, u.user_jabber, u.user_inactive_reason, u.user_email, u.user_regdate, u.user_posts, u.user_sig_bbcode_uid, u.user_sig_bbcode_bitfield, u.user_colour, u.user_lastvisit, u.user_warnings, u.user_lastpost_time, u.username_clean, p.*
+		$sql = 'SELECT u.user_id AS uid, u.username, u.user_sig, u.user_inactive_reason, u.user_email, u.user_regdate, u.user_posts, u.user_sig_bbcode_uid, u.user_sig_bbcode_bitfield, u.user_colour, u.user_lastvisit, u.user_warnings, u.user_lastpost_time, u.username_clean, p.*
 			FROM ' . USERS_TABLE . ' AS u
 			LEFT JOIN ' . PROFILE_FIELDS_DATA_TABLE . ' AS p ON (p.user_id = u.user_id)
 			WHERE u.user_type <> ' . USER_IGNORE .
@@ -235,7 +234,6 @@ class profile_list
 				'EMAIL'				=> $row['user_email'],
 				'ICQ'				=> $row['pf_phpbb_icq'],
 				'INTERESTS'			=> $row['pf_phpbb_interests'],
-				'JABBER'			=> $row['user_jabber'],
 				'JOINED'			=> $user->format_date($row['user_regdate']),
 				'LOCATION'			=> $row['pf_phpbb_location'],
 				'OCCUPATION'		=> $row['pf_phpbb_occupation'],
