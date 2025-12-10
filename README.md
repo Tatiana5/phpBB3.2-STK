@@ -1,5 +1,5 @@
 # phpBB3.2-STK
-SupportTool Kit For phpBB3.2.x
+SupportTool Kit For phpBB4.x
 
 Create folder called stk in the root folder of your board (where located file config.php) and just copy all files from folder PHPBB3.2-STK-MASTER, keeping folder structure.
 
