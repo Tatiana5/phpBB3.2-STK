@@ -109,7 +109,7 @@ class resync_avatars
 
 				$ext		= substr(strrchr($row['avatar'], '.'), 1);
 				$filename	= ($avatar_group) ? $row['group_id'] : $row['id'];
-				$path		= PHPBB_ROOT_PATH . $config['avatar_path'] . '/' . $config['avatar_salt'] . '_' . (($avatar_group) ? 'g' : '') . $filename . '.' . $ext;
+				$path		= PHPBB_ROOT_PATH . $config['storage\avatar\config\path'] . '/' . $config['avatar_salt'] . '_' . (($avatar_group) ? 'g' : '') . $filename . '.' . $ext;
 			}
 			else if ($row['avatar_type'] == AVATAR_GALLERY)
 			{

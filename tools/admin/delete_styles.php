@@ -44,9 +44,9 @@ class delete_styles
 			if (!$style_id)
 			{
 				// Install prosilver
-				if (!file_exists($dir . 'prosilver/style.cfg'))
+				if (!file_exists($dir . 'prosilver/composer.json'))
 				{
-					trigger_error($lang['NOT_EXISTS_ PROSILVER'], E_USER_WARNING);
+					trigger_error($lang['NOT_EXISTS_PROSILVER'], E_USER_WARNING);
 				}
 
 				$sql_ary = array(
@@ -68,8 +68,8 @@ class delete_styles
 			$db->sql_query('UPDATE ' . USERS_TABLE . ' SET user_style = ' . $style_id);
 
 			if ($style_id == $config['default_style'])
-			{				if (!file_exists($dir . $style_path . '/style.cfg'))
-				{					trigger_error('Not exists'. $style_name);
+			{				if (!file_exists($dir . $style_path . '/composer.json'))
+				{					trigger_error('Not exists '. $style_name);
 				}
 			}
 			// Delete styles

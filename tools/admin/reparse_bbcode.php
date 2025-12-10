@@ -745,7 +745,8 @@ class reparse_bbcode
 		$message = html_entity_decode_utf8($message);
 
 		// Now we'll *$request->variable* the post
-		set_var($message, $message, 'string', true);
+		$type_cast_helper = new \phpbb\request\type_cast_helper();
+		$type_cast_helper->set_var($message, $message, 'string', true);
 		$message = utf8_normalize_nfc($message);
 
 		// Update the parser

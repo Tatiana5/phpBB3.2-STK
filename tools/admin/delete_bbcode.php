@@ -56,7 +56,7 @@ class delete_bbcode
 		'enable_urls'		=> false,
 	);
 
-	var $bbcodes = array('youtube', 'video', 'audio', 'media', 'url', 'BBvideo');
+	var $bbcodes = array('youtube', 'video', 'audio', 'media', 'url', 'BBvideo', 'flash');
 
 	/**
 	* Number of posts to be parsed per run
@@ -520,7 +520,7 @@ class delete_bbcode
 
 function get_bbcodes()
 {
-	$bbcodes = array('youtube', 'video', 'audio', 'media', 'url', 'BBvideo');
+	$bbcodes = array('youtube', 'video', 'audio', 'media', 'url', 'BBvideo', 'flash');
 	$s_bbcodes = '';
 	$i = 0;
 	foreach ($bbcodes as $bbcode)

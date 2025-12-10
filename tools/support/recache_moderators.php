@@ -49,14 +49,16 @@ class recache_moderators
 	*/
 	function run_tool()
 	{
-		if (!function_exists('cache_moderators'))
+		if (!function_exists('phpbb_cache_moderators'))
 		{
 			global $phpbb_root_path, $phpEx;
 
 			include("{$phpbb_root_path}includes/functions_admin.$phpEx");
 		}
+		
+		global $db, $phpbb_container, $cache, $auth;
 
-		cache_moderators();
+		phpbb_cache_moderators($db, $phpbb_container->get('dbal.tools'), $cache, $auth);
 
 		trigger_error(user_lang('RECACHE_MODERATORS_COMPLETE'));
 	}

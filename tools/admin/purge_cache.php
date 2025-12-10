@@ -49,13 +49,14 @@ class purge_cache
 	*/
 	function run_tool(&$error)
 	{
-		global $auth, $cache;
+		global $auth, $cache, $db, $phpbb_container;
+		$db_tools = $phpbb_container->get('dbal.tools');
 
 		$cache->purge();
 
 		// Clear permissions
 		$auth->acl_clear_prefetch();
-		cache_moderators();
+		phpbb_cache_moderators($db, $db_tools, $cache, $auth);
 
 		add_log('admin', 'LOG_PURGE_CACHE');
 
