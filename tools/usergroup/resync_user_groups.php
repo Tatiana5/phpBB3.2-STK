@@ -86,7 +86,8 @@ class resync_user_groups
 	 * Run the required resync actions
 	 */
 	function run_tool(&$error)
-	{		global $request;
+	{
+		global $request;
 
 		$this->_load_classes();
 		$this->run_rr	= $request->variable('rr', false);

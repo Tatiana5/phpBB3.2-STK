@@ -27,8 +27,10 @@ class delete_styles
 		page_header(user_lang('DELETE_STYLES'));
 
 		if ($submit)
-		{			// Check prosilver installed
-			$style = 'prosilver';			$sql = 'SELECT style_id, style_name, style_path
+		{
+			// Check prosilver installed
+			$style = 'prosilver';
+			$sql = 'SELECT style_id, style_name, style_path
 				FROM ' . STYLES_TABLE . '
 				WHERE style_name LIKE \'' . $style . '\'';
 			$result = $db->sql_query($sql);
@@ -68,8 +70,10 @@ class delete_styles
 			$db->sql_query('UPDATE ' . USERS_TABLE . ' SET user_style = ' . $style_id);
 
 			if ($style_id == $config['default_style'])
-			{				if (!file_exists($dir . $style_path . '/style.cfg'))
-				{					trigger_error('Not exists'. $style_name);
+			{
+				if (!file_exists($dir . $style_path . '/style.cfg'))
+				{
+					trigger_error('Not exists'. $style_name);
 				}
 			}
 			// Delete styles

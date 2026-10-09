@@ -25,7 +25,6 @@ class datafile_3_3_7
 	* @var Array The bots
 	*/
 	var $bots = array(
-
 		// No bots changes 3.3.6 -> 3.3.7
 	);
 

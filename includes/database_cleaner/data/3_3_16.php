@@ -25,7 +25,6 @@ class datafile_3_3_16
 	* @var Array The bots
 	*/
 	var $bots = array(
-
 		// No bots changes 3.3.15 -> 3.3.16
 	);
 
@@ -145,6 +144,6 @@ class datafile_3_3_16
 
 	function get_schema_struct(&$schema_data)
 	{
-		// No schema changes 3.3.13 -> 3.3.14
+		// No schema changes 3.3.15 -> 3.3.16
 	}
 }

@@ -68,7 +68,8 @@ class plugin
 	 * Load the list with available plugins and assign them in the correct category
 	 */
 	function __construct()
-	{		global $request, $user;
+	{
+		global $request, $user;
 		// Set the path
 		$this->tool_box_path = STK_ROOT_PATH . 'tools/';
 

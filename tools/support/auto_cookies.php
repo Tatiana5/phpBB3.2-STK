@@ -54,7 +54,8 @@ class auto_cookies
 	* Does the actual stuff we want the tool to do after submission
 	*/
 	function run_tool(&$error)
-	{		global $config, $request;
+	{
+		global $config, $request;
 
 		if (!check_form_key('auto_cookies'))
 		{

@@ -166,7 +166,8 @@ class resync_newly_registered
 			WHERE ' . $db->sql_in_set('group_name', array('GLOBAL_MODERATORS', 'ADMINISTRATORS')) .'';
 		$result	= $db->sql_query($sql);
 		while($row = $db->sql_fetchrow($result))
-		{			$admin_gid[] = $row['group_id'];
+		{
+			$admin_gid[] = $row['group_id'];
 		}
 		$db->sql_freeresult($result);
 		$sql_where_not = ' AND ' . $db->sql_in_set('u.group_id', $admin_gid, true) . '';

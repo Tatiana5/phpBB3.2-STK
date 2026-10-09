@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @package Support Toolkit - Prune Styles Russian language Sheer
+ * @package Support Toolkit - Prune Styles English language Sheer
  * @copyright (c) 2019 phpBBGuru Sheer
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  *

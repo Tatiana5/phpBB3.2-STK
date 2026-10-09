@@ -246,13 +246,16 @@ function user_lang()
 
 */
 function stk_add_lang($lang_file)
-{	global $template, $lang, $user, $config;
+{
+	global $template, $lang, $user, $config;
 
 	if (empty($user->data) || !$user->data['user_lang'] || $user->data['user_id'] == 1)
-	{		$default_lang = $config['default_lang'];
+	{
+		$default_lang = $config['default_lang'];
 	}
 	else
-	{		$default_lang = $user->data['user_lang'];
+	{
+		$default_lang = $user->data['user_lang'];
 	}
 
 	include(PHPBB_ROOT_PATH . 'language/' . $default_lang . '/common.' . PHP_EXT);
@@ -353,17 +356,21 @@ function perform_unauthed_quick_tasks($action, $submit = false)
 					$v = (PHPBB_VERSION >= '3.3.0') ? "3.3.{$i}" : "3.2.{$i}";
 
 					if ($config['version'] < PHPBB_VERSION)
-					{						for ($i = $_phpbb_version; $i > 1; $i--)
+					{
+						for ($i = $_phpbb_version; $i > 1; $i--)
 						{
 							$d = ($v == $config['version']) ? " default='default'" : '';
 							$version_options .= "<option value='{$v}'{$d}>{$v}</option>";
 						}
 					}
 					else
-					{						list(,, $_phpbb_version) = explode('.', $version_data['current']);
+					{
+						list(,, $_phpbb_version) = explode('.', $version_data['current']);
 						for($i = $_phpbb_version; $i > 1; $i--)
-						{							$d = ($v == $config['version']) ? " default='default'" : '';
-							$version_options .= "<option value='{$v}'{$d}>{$v}</option>";						}					}
+						{
+							$d = ($v == $config['version']) ? " default='default'" : '';
+							$version_options .= "<option value='{$v}'{$d}>{$v}</option>";						}
+					}
 
 					$template->assign_vars(array(
 						'UPDATES_AVAILABLE'				=> (!$version_options && (PHPBB_VERSION < $version_data['current'] || $config['version'] < $version_data['current'])) ? sprintf($user->lang['UPDATES_AVAILABLE'], $version_data['current'], $announcement) : false,

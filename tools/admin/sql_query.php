@@ -89,7 +89,8 @@ class sql_query
 			}
 
 			if ($show_results)
-			{				// Display the query
+			{
+				// Display the query
 				$template->assign_block_vars('queries', array('QUERY' => $sql));
 
 				$cnt = 0;

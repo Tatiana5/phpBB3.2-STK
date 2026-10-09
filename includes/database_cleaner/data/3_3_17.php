@@ -25,7 +25,6 @@ class datafile_3_3_17
 	* @var Array The bots
 	*/
 	var $bots = array(
-
 		// No bots changes 3.3.16 -> 3.3.17
 	);
 
@@ -33,6 +32,7 @@ class datafile_3_3_17
 	* @var Array 3.3.17 config data
 	*/
 	var $config = array(
+		'oauth_states_last_gc'		=> array('config_value' => '', 'is_dynamic' => '0'),
 	);
 
 	/**
@@ -145,6 +145,9 @@ class datafile_3_3_17
 
 	function get_schema_struct(&$schema_data)
 	{
-		// No schema changes 3.3.13 -> 3.3.14
+		// Add column
+		$schema_data['phpbb_oauth_states']['COLUMNS']['state_time']	= array('TIMESTAMP', 0);
+		// Add key
+		$schema_data['phpbb_oauth_states']['KEYS']['state_time'] = array('INDEX', 'state_time');
 	}
 }
